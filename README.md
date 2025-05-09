@@ -10,7 +10,8 @@ Each model is trained on real GitHub commits that only modify Python files. The 
 
 ---
 
-<pre>## Project Structure \`\`\`
+## Project Structure 
+<pre>
 
 ├── decoder-only-transformer/
 │ ├── Data-Pipeline-for-Git-Commit-Transformer.ipynb
@@ -29,7 +30,8 @@ Each model is trained on real GitHub commits that only modify Python files. The 
 │ ├── Performance_Evaluation_for-Git-Commit-GRU.ipynb
 │ ├── trained_model/
 │ ├── data/
-│ └── README.md  \`\`\` </pre>
+│ └── README.md  
+ </pre>
 
 Each directory contains:
 - A complete notebook-based pipeline (data → tokenizer → training → inference → evaluation)
