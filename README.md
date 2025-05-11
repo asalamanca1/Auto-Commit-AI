@@ -3,7 +3,7 @@
 Generate Git commit messages from raw code diffs using deep learning.
 
 This project implements and compares two approaches:
-- A **GPT-2 decoder-only transformer** trained from scratch.
+- A **GPT-2 decoder-only transformer** trained from scratch(flagship model).
 - A **gated recurrent unit (GRU)**–based baseline model.
 
 Each model is trained on real GitHub commits that only modify Python files. The goal is to automatically generate meaningful, readable commit messages directly from code changes.
