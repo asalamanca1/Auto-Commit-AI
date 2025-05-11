@@ -97,12 +97,23 @@ Files:
 
 1. **(Optional)** Run the data pipeline in `data-pipeline/` to collect your own dataset.
    - If you're using the provided dataset, skip this step.
-2. Download the dataset and model weights using the links above, and place them in the correct folders.
+
+2. Download the dataset and model weights using the links above, and place them in the correct folders:
+
+   - Place `cleaned_python_commit_dataset.csv` in:
+     - `decoder-only-transformer/data/`
+     - `gated-recurrent-unit/data/`
+
+   - Place GRU and Transformer model weights in their respective `trained_model/` folders.
 
 3. Choose your use case:
+
    - **Just want to run inference or evaluate?**
-     - Load the dataset **and** the pre-trained weights.
-     - Run:
+     - **Make sure to load:**
+       - The cleaned dataset (`cleaned_python_commit_dataset.csv`) in the correct `data/` folder
+       - The appropriate **pre-trained model weights** in the correct `trained_model/` folder
+       - The **custom tokenizer** used during training (automatically loaded in the notebooks)
+     - Then run:
        - `decoder-only-transformer/Inference-for-Git-Commit-Transformer.ipynb`
        - `gated-recurrent-unit/Inference_for_Git_Commit_GRU.ipynb`
      - Or evaluate performance with:

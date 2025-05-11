@@ -2,6 +2,10 @@
 
 This folder contains scripts to build a dataset of GitHub commit messages and their corresponding diffs, filtered down to Python-only changes. The goal is to get clean, meaningful data for training ML models that can generate commit messages.
 
+> **This pipeline is specifically for loading and creating your own custom dataset from GitHub.**  
+> If you're using the provided dataset, you can skip this step entirely.
+
+
 ---
 
 ## Overview

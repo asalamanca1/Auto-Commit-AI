@@ -56,7 +56,10 @@ decoder-only-transformer/
 - Saves weights to `trained_model/model.safetensors`.
 
 ### `Inference-for-Git-Commit-Transformer.ipynb`
-- Loads tokenizer and trained model.
+- **Make sure to load the following before running inference**:
+  - `cleaned_python_commit_dataset.csv` (must be placed in `data/`)
+  - `custom_bpe_tokenizer.json` (in the root of this folder)
+  - Pre-trained model weights (`model.safetensors`, `config.json`, `generation_config.json` in `trained_model/`)
 - Uses `generate_commit_message()` to produce predictions from new diffs.
 - Supports inference on both custom and validation samples.
 
