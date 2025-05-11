@@ -2,3 +2,5 @@
 *.csv
 *.pt
 *.DS_Store
+decoder-only-transformer/trained_model/config.json
+decoder-only-transformer/trained_model/generation_config.json
