@@ -19,11 +19,49 @@ Auto-Commit-AI/
 ├── data-pipeline/               # Scripts to collect, filter, and clean GitHub commit data
 │
 ├── decoder-only-transformer/   # Notebooks and evaluation for the Transformer model
+│   └── data/                    # Place dataset here
+│   └── trained_model/          # Place transformer weights here
 │
 ├── gated-recurrent-unit/       # GRU-based model training, inference, and evaluation
+│   └── data/                    # Place dataset here
+│   └── trained_model/          # Place GRU weights here
 │
 └── README.md                    # You’re here
  </pre>
+
+---
+
+## Download Links
+
+Before running the models, download and place the following files in the specified folders:
+
+### Dataset (`cleaned_python_commit_dataset.csv`)
+Download: [Dataset Link](https://minersutep-my.sharepoint.com/:f:/g/personal/asalamanca1_miners_utep_edu/EkQcXbLjIYFMiIpW6HXFnhQBW4b0aO_eV3HBy3bKOR1E1w?e=phvKRu)  
+Place in:
+- `decoder-only-transformer/data/`
+- `gated-recurrent-unit/data/`
+
+> **Skip running the data pipeline if you're using this dataset.**  
+> Run the pipeline only if you want to collect a custom dataset from GitHub.
+
+---
+
+### GRU Model Weights (`gru_model.pt`)
+Download: [GRU Model Link](https://minersutep-my.sharepoint.com/:f:/g/personal/asalamanca1_miners_utep_edu/EgOSW8RSa4xKhyKJ6hLoZRgBkdQvNwxkBIUiWCBYIvwcGw?e=K2BH17)  
+Place in:
+- `gated-recurrent-unit/trained_model/`
+
+---
+
+### Transformer Model Weights  
+Download: [Transformer Weights Link](https://minersutep-my.sharepoint.com/:f:/g/personal/asalamanca1_miners_utep_edu/El-lkqa_QxJFvHOLX2vYYiEB-odTJDs3Z7NLcN83k1Kz_g?e=tXEITm)  
+Place all three files in:
+- `decoder-only-transformer/trained_model/`
+
+Files:
+- `model.safetensors`
+- `generation_config.json`
+- `config.json`
 
 ---
 
@@ -54,11 +92,28 @@ Auto-Commit-AI/
 
 ## Getting Started
 
-1. Run the data pipeline (in `data-pipeline/`) to collect and prepare the dataset.
-2. Choose a model to train:
-   - `decoder-only-transformer/Training-Git-Commit-Transformer.ipynb`
-   - `gated-recurrent-unit/Training-Git-Commit-GRU.ipynb`
-3. Evaluate and compare performance in the respective evaluation notebooks.
+> **Skip the data pipeline unless you specifically want to create your own dataset.**  
+> The cleaned dataset is already provided and ready to use.
+
+1. **(Optional)** Run the data pipeline in `data-pipeline/` to collect your own dataset.
+   - If you're using the provided dataset, skip this step.
+2. Download the dataset and model weights using the links above, and place them in the correct folders.
+
+3. Choose your use case:
+   - **Just want to run inference or evaluate?**
+     - Load the dataset **and** the pre-trained weights.
+     - Run:
+       - `decoder-only-transformer/Inference-for-Git-Commit-Transformer.ipynb`
+       - `gated-recurrent-unit/Inference_for_Git_Commit_GRU.ipynb`
+     - Or evaluate performance with:
+       - `decoder-only-transformer/Performance-Evaluation-for-Git-Commit-Transformer.ipynb`
+       - `gated-recurrent-unit/Performance_Evaluation_for_Git_Commit_GRU.ipynb`
+
+   - **Want to train a model from scratch?**
+     - Load only the dataset — **do not load the pre-trained weights.**
+     - Use:
+       - `decoder-only-transformer/Training-Git-Commit-Transformer.ipynb`
+       - `gated-recurrent-unit/Training-Git-Commit-GRU.ipynb`
 
 ---
 
