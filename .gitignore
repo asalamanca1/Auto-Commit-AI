@@ -1,3 +1,4 @@
 *.safetensors
 *.csv
 *.pt
+*.DS_Store

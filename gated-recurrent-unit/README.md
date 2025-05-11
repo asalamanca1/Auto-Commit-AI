@@ -1,4 +1,4 @@
-# 🧠 Gated Recurrent Unit for Git Commit Message Generation
+# Gated Recurrent Unit for Git Commit Message Generation
 
 This project trains and evaluates a baseline GRU-based language model to generate commit messages from Git diffs. The model uses a custom-trained Byte Pair Encoding (BPE) tokenizer and is evaluated using both standard NLP metrics and LLM-based factual scoring (RAGAs).
 

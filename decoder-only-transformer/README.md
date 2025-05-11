@@ -4,7 +4,7 @@ This project builds a machine learning pipeline to generate Git commit messages 
 
 ---
 
-## 🧠 Model Summary
+## Model Summary
 
 - **Architecture**: GPT-2 style transformer (decoder-only)
 - **Tokenizer**: Custom Byte Pair Encoding (BPE) tokenizer trained on the dataset

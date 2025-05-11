@@ -8,89 +8,64 @@ This project implements and compares two approaches:
 
 Each model is trained on real GitHub commits that only modify Python files. The goal is to automatically generate meaningful, readable commit messages directly from code changes.
 
+> **Note:** All code and notebooks were developed to run in **Google Colab**. 
+
 ---
 
 ## Project Structure 
 <pre>
-
-├── decoder-only-transformer/
-│ ├── Data-Pipeline-for-Git-Commit-Transformer.ipynb
-│ ├── Training-Git-Commit-Transformer.ipynb
-│ ├── Inference-for-Git-Commit-Transformer.ipynb
-│ ├── Performance_Evaluation_for_Git_Commit_Transformer.ipynb
-│ ├── trained_model/
-│ ├── data/
-│ ├── custom_bpe_tokenizer.json ← custom trained BPE tokenizer
-│ └── README.md ← model-specific details
+Auto-Commit-AI/
 │
-├── gated-recurrent-unit/
-│ ├── Data-Pipeline-for-Git-Commit-GRU.ipynb
-│ ├── Training-Git-Commit-GRU.ipynb
-│ ├── Inference-for-Git-Commit-GRU.ipynb
-│ ├── Performance_Evaluation_for-Git-Commit-GRU.ipynb
-│ ├── trained_model/
-│ ├── data/
-│ └── README.md  
+├── data-pipeline/               # Scripts to collect, filter, and clean GitHub commit data
+│
+├── decoder-only-transformer/   # Notebooks and evaluation for the Transformer model
+│
+├── gated-recurrent-unit/       # GRU-based model training, inference, and evaluation
+│
+└── README.md                    # You’re here
  </pre>
 
-Each directory contains:
-- A complete notebook-based pipeline (data → tokenizer → training → inference → evaluation)
-- Trained tokenizer and saved weights
-- Cleaned dataset and metrics
-- A `README.md` with notes specific to that model
+---
+
+## Models
+
+### Decoder-Only Transformer
+
+- Trained on a custom BPE tokenizer.
+- Takes a code diff and generates a commit message autoregressively.
+- Evaluation metrics include BLEU, ROUGE-L, METEOR, and BERTScore.
+
+### GRU Language Model
+
+- Simpler RNN-based model trained on the same dataset.
+- Useful for comparing performance vs. the Transformer.
 
 ---
 
-## Model Details
+## Dataset
 
-### Decoder-Only Transformer (GPT-2)
-- 20 transformer layers
-- 768 hidden size
-- 12 attention heads
-- 48k BPE vocabulary
-- Trained from scratch on GitHub commit diffs
-
-### Gated Recurrent Unit (GRU)
-- Sequence-to-sequence RNN architecture
-- Serves as a simpler baseline for comparison
-- Trained on the same dataset as the transformer
+- Only includes commits that:
+  - Touch Python files only (`.py`)
+  - Have reasonably descriptive commit messages (50–300 chars)
+- Includes both the raw commit message and the Git diff.
+- Cleaned to remove metadata like `Signed-off-by`, PR merge boilerplate, etc.
 
 ---
 
-## Evaluation Metrics
+## Getting Started
 
-Both models are evaluated on the same 100-sample test set using:
-
-- **BLEU**
-- **ROUGE-L**
-- **METEOR**
-- **BERTScore**
-- **RAGAs Answer Correctness**  
-  *(Requires OpenAI API key and active billing)*
-
-Outputs include:
-- `sample_metrics_with_ragas_and_bertscore.json`
-- `all_diffs.txt` (readable format)
-- Histogram plots for each metric
+1. Run the data pipeline (in `data-pipeline/`) to collect and prepare the dataset.
+2. Choose a model to train:
+   - `decoder-only-transformer/Training-Git-Commit-Transformer.ipynb`
+   - `gated-recurrent-unit/Training-Git-Commit-GRU.ipynb`
+3. Evaluate and compare performance in the respective evaluation notebooks.
 
 ---
 
-## How to Run
+## Notes
 
-Pick either `decoder-only-transformer/` or `gated-recurrent-unit/` and run the notebooks in the following order:
+- All code uses public GitHub data.
+- GitHub token required to run data collection scripts (due to rate limits).
+- Evaluation includes detailed metric plots and JSON output for analysis.
 
-### 1. Data Pipeline
-- `Data-Pipeline-for-Git-Commit-*.ipynb`  
-  Collect and clean commits + diffs from GitHub.
-
-### 2. Training
-- `Training-Git-Commit-*.ipynb`  
-  Train the tokenizer and model from scratch.
-
-### 3. Inference
-- `Inference-for-Git-Commit-*.ipynb`  
-  Generate commit messages from raw diffs.
-
-### 4. Evaluation
-- `Performance_Evaluation_for_Git_Commit-*.ipynb`  
-  Run BLEU, ROUGE, METEOR, BERTScore, and RAGAs. Save scores and plots.
+---
