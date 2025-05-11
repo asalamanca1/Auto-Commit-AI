@@ -27,7 +27,7 @@ gated-recurrent-unit/
 │ ├── gru_answer_correctness_distribution.png # RAGAs factual correctness histogram
 │
 ├── Training-Git-Commit-GRU.ipynb # Notebook to train the GRU model
-├── Inference_for_Git_Commit_GRU.ipynb # Notebook to load model and generate predictions
-├── Performance_Evaluation__Git_Commit_GRU.ipynb # Notebook to compute and visualize evaluation metrics
+├── Inference-for-Git-Commit-GRU.ipynb # Notebook to load model and generate predictions
+├── Performance-Evaluation-Git-Commit-GRU.ipynb # Notebook to compute and visualize evaluation metrics
 </pre>
 
